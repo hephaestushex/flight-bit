@@ -50,14 +50,28 @@ def calibrate_flight_bit():
     finally:
         microbit.disconnect()
 
+def calculate_pitch_roll(x, y, z):
+    pitch = math.atan2(y, math.sqrt(x**2 + z**2))
+    roll = math.atan2(x, math.sqrt(y**2 + z**2))
+
+    pitch = math.degrees(pitch)
+    roll = math.degrees(roll)
+    
+    return pitch, roll
+
 def update_ui_data():
     display.update_heading(current_data.heading)
-    print(current_data.accelorometer)
+    
+    x, y, z = current_data.accelorometer.x / 1000, current_data.accelorometer.y / 1000, current_data.accelorometer.z / 1000
+
+    pitch, roll = calculate_pitch_roll(x, y, z)
+    display.update_attitude(math.floor(pitch), math.floor(roll))
     display.after(50, update_ui_data)
 
 
 
 display = ui.AirplaneInstruments()
+#display.after(1, calibrate_flight_bit) #runs this once per session of flight:bit. comment this out for testing
 display.after(50, collect_data)
 display.after(50, update_ui_data)
 display.mainloop()
