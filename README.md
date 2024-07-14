@@ -9,9 +9,9 @@ needs kaspersmicrobit for bluetooth connection
 To setup micro:bit for use with this project, view the link [here](https://kaspersmicrobit.readthedocs.io/en/stable/makecode-bluetooth/download-a-hex-file-without-pairing/).
 Download this hex, and simply run the python file
 
-#images
-An example UI
+# images
+an example UI
 
-![alt text](images/Screenshot 2024-07-13 183651.png)
+![example ui of finalized project](https://github.com/hephaestushex/flight-bit/blob/main/images/Screenshot%202024-07-13%20183651.png)
 
 
